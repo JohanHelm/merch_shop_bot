@@ -3,7 +3,7 @@ from aiogram.filters import Command
 from aiogram.types import Message
 
 from config_data.config import Seller
-from lexicon.msg_texts import hello_msg, purchase_instruction, pay_instruction
+from lexicon.msg_gener import create_hello_msg
 
 
 common_router = Router()
@@ -14,4 +14,4 @@ async def start(msg: Message, seller: Seller):
     if msg.from_user.id == seller.seller_tg_id:
         pass
     else:
-        await msg.answer(text=f"{hello_msg}{purchase_instruction}{seller.seller_link}\n\n{pay_instruction}{seller.seller_num}")
+        await msg.answer(text=create_hello_msg(seller))
