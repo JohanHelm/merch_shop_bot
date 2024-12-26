@@ -7,7 +7,8 @@ from aiogram.enums.parse_mode import ParseMode
 from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.client.bot import DefaultBotProperties
 
-from config_data.config import Config, load_config
+from config_data.config import load_config
+from handlers.common import common_router
 
 
 
@@ -19,7 +20,8 @@ async def start_bot():
     bot = Bot(token=config.tg_bot.token, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
     dp = Dispatcher(storage=MemoryStorage())
     dp.message.middleware()
-    # dp.include_router(router_channel)
+    dp.include_router(common_router)
+    dp.workflow_data.update({"seller": config.seller})
     await bot.delete_webhook(drop_pending_updates=True)
     await dp.start_polling(bot, allowed_updates=dp.resolve_used_update_types())
 
