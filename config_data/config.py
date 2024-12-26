@@ -20,6 +20,7 @@ class TgBot:
 class Seller:
     seller_link: str
     seller_num: int
+    seller_tg_id: int
 
 
 
@@ -43,6 +44,7 @@ def load_config(path: Path | None = None) -> Config:
         seller=Seller(
             seller_link=env("SELLER_LINK"),
             seller_num=env("SELLER_NUM"),
+            seller_tg_id=env("SELLER_TG_ID")
         ),
         # db=DatabaseConfig(
         #     database=env('DATABASE'),
