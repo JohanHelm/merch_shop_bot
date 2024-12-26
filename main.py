@@ -1,18 +1,22 @@
 import asyncio
 import logging
-import dotenv
-import os
+from pathlib import Path
 
 from aiogram import Bot, Dispatcher
 from aiogram.enums.parse_mode import ParseMode
 from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.client.bot import DefaultBotProperties
 
+from config_data.config import Config, load_config
+
+
+
+
 
 
 async def start_bot():
-    dotenv.load_dotenv("secrets/.env")
-    bot = Bot(token=os.getenv('TOKEN'), default=DefaultBotProperties(parse_mode=ParseMode.HTML))
+    config = load_config(Path("secrets/.env"))
+    bot = Bot(token=config.tg_bot.token, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
     dp = Dispatcher(storage=MemoryStorage())
     dp.message.middleware()
     # dp.include_router(router_channel)
