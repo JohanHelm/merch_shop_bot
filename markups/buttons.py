@@ -1,14 +1,19 @@
-from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
+from aiogram.types import InlineKeyboardButton
 
 
-# Создаем объекты инлайн-кнопок
 t_shirts_button = InlineKeyboardButton(
     text="Футболки",
-    callback_data="t_shirts_"
+    callback_data="assortment_t_shirts"
 )
-url_button_2 = InlineKeyboardButton(
-    text='Документация Telegram Bot API',
-    url='https://core.telegram.org/bots/api'
+
+stickers_button = InlineKeyboardButton(
+    text="Наклейки",
+    callback_data="assortment_stickers"
+)
+
+chevrons_button = InlineKeyboardButton(
+    text="Шевроны",
+    callback_data="assortment_chevrons"
 )
 
 

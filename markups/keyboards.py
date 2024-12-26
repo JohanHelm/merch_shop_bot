@@ -1,8 +1,9 @@
 from aiogram.types import InlineKeyboardMarkup
 
+from markups.buttons import *
 
 
-# Создаем объект инлайн-клавиатуры
-keyboard = InlineKeyboardMarkup(
-    inline_keyboard=[[url_button_1],
-                     [url_button_2]])
+catalog_keyboard = InlineKeyboardMarkup(
+    inline_keyboard=[[t_shirts_button],
+                     [stickers_button],
+                     [chevrons_button]])
